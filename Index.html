@@ -2,64 +2,45 @@
     <head>
         <meta charset="iso-8859-1">
         <title>Automata WebPresentation</title>
+        <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="https://brython.info/src/brython.js"></script>
     </head>
-    <style>
-    body {
-  background-color: lightblue;
-}
-
-h1 {
-  color: white;
-  text-align: center;
-}
-
-p {
-  font-family: verdana;
-}
-    </style>
+   
     <body>
       <h2>Upload a CSV File</h2>
-      <input type="text" id="csvFileInput" accept=".csv">
-      <button onclick="uploadCSV()">Upload</button>
-      <script>
-        function uploadCSV() {
-          const input = document.getElementById('csvFileInput');
-          const file = input.files[0];
-    
-          if (!file) {
-            alert('Please select a file.');
-            return;
-          }
-    
-          if (file.type !== 'text/csv') {
-            alert('Please select a CSV file.');
-            return;
-          }
-    
-          const formData = new FormData();
-          formData.append('csvFile', file);
-    
-          fetch("C:\Users\omar-\Desktop\Python\Automata", {
-            method: 'POST',
-            body: formData
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.text();
-          })
-          .then(data => {
-            console.log(data);
-            alert('CSV file uploaded successfully.');
-          })
-          .catch(error => {
-            console.error('There was an error!', error);
-            alert('Error uploading CSV file.');
-          });
+  <form id="csvForm" enctype="multipart/form-data">
+    <input type="file" id="csvFileInput" name="csvFile" accept=".csv">
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    document.getElementById('csvForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      const formData = new FormData();
+      const fileInput = document.getElementById('csvFileInput');
+      formData.append('csvFile', fileInput.files[0]);
+
+      fetch('Automata\Website\csvFileInput.csv', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
-      </script>
+        return response.json();
+      })
+      .then(data => {
+        console.log('File uploaded successfully:', data);
+        alert('File uploaded successfully.');
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+        alert('Error uploading file.');
+      });
+    });
+  </script>
     </body>
     
     <body onload="brython(1)">
@@ -74,11 +55,11 @@ p {
             print("Hello World")
         </script>
 
-        <p>Your Text:</p>
+        <!--<p></p>
         <p><input id="text" autocomplete="off"></p>
-        <p>Uppercase:</p>
+        <p></p>
         <p><textarea rows="5" cols="60" id="uppercase"></textarea></p>
-        <p><button id="button">UPPERCASE</button></p>
+        -->
     </body>
 
 </html>
