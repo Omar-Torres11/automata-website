@@ -1,68 +1,15 @@
-<html>
-    <head>
-        <meta charset="iso-8859-1">
-        <title>Automata WebPresentation</title>
-        <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="https://brython.info/src/brython.js"></script>
-    </head>
-   
-    <body>
-      <h2>Upload a CSV File</h2>
-  <form action="upload.php" id="csvForm" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <h2>Upload File</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file">
-    <button type ="submit" name="submit">Upload</button>
-
-   <!--- <input type="file" id="csvFileInput" name="csvFile" accept=".csv">
-    <button action = "upload.php">Upload</button> -->
-  </form>
-
-  <!--<script>
-    document.getElementById('csvForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the form from submitting normally
-
-      const formData = new FormData();
-      const fileInput = document.getElementById('csvFileInput');
-      formData.append('csvFile', fileInput.files[0]);
-
-      fetch('Automata\Website\script.py', 
-      {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('File uploaded successfully:', data);
-        alert('File uploaded successfully.');
-      })
-      .catch(error => {
-        console.error('There was an error!', error);
-        alert('Error uploading file.');
-      });
-    });
-  </script>-->
-    </body>
-    
-    <body onload="brython(1)">
-
-        <script type="text/python">
-            print("Hello World")
-        </script>
-
-        <!--<p></p>from browser import document
-
-            def clicked(ev):
-                document["uppercase"].value = document["text"].value.upper()
-            
-            document["button"].bind("click", clicked) 
-        <p><input id="text" autocomplete="off"></p>
-        <p></p>
-        <p><textarea rows="5" cols="60" id="uppercase"></textarea></p>
-        -->
-    </body>
-
+    <button type="submit" name="submit">upload</button>
+    </form>
+</body>
 </html>
