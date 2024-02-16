@@ -8,12 +8,15 @@
    
     <body>
       <h2>Upload a CSV File</h2>
-  <form id="csvForm" enctype="multipart/form-data">
-    <input type="file" id="csvFileInput" name="csvFile" accept=".csv">
-    <button type="submit">Upload</button>
+  <form action="upload.php" id="csvForm" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type ="submit" name="submit">Upload</button>
+
+   <!--- <input type="file" id="csvFileInput" name="csvFile" accept=".csv">
+    <button action = "upload.php">Upload</button> -->
   </form>
 
-  <script>
+  <!--<script>
     document.getElementById('csvForm').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent the form from submitting normally
 
@@ -21,7 +24,8 @@
       const fileInput = document.getElementById('csvFileInput');
       formData.append('csvFile', fileInput.files[0]);
 
-      fetch('Automata\Website\csvFileInput.csv', {
+      fetch('Automata\Website\script.py', 
+      {
         method: 'POST',
         body: formData
       })
@@ -40,22 +44,21 @@
         alert('Error uploading file.');
       });
     });
-  </script>
+  </script>-->
     </body>
     
     <body onload="brython(1)">
 
         <script type="text/python">
-            from browser import document
+            print("Hello World")
+        </script>
+
+        <!--<p></p>from browser import document
 
             def clicked(ev):
                 document["uppercase"].value = document["text"].value.upper()
             
-            document["button"].bind("click", clicked)
-            print("Hello World")
-        </script>
-
-        <!--<p></p>
+            document["button"].bind("click", clicked) 
         <p><input id="text" autocomplete="off"></p>
         <p></p>
         <p><textarea rows="5" cols="60" id="uppercase"></textarea></p>
